@@ -1,8 +1,19 @@
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+//Components
+import Navbar from "./components/Navbar";
+//Pages
+import Auth from "./pages/Auth";
+import Home from "./pages/Home";
+
 function App() {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Auth />} />
+        <Route path="dashboard" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
