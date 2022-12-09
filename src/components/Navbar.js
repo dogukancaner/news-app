@@ -9,7 +9,7 @@ const Navbar = () => {
     await signOut(auth);
     setTimeout(() => {
       window.location = "/";
-    }, 2000);
+    }, 3000);
   };
   return (
     <div className="bg-sky-700 h-12 text-white flex items-center justify-between p-3  ">

@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 //Pages
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
+import SignUp from "./auth/SignUp";
 
 // Toast
 import { ToastContainer } from "react-toastify";
@@ -29,11 +31,13 @@ function App() {
       <BrowserRouter>
         {users && <Navbar />}
         <Routes>
-          <Route path="/" element={<Auth />} />
+          <Route path="/" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+          {/* <Route path="/" element={<Auth />} /> */}
           <Route path="dashboard" element={<Home users={users} />} />
         </Routes>
       </BrowserRouter>
-      <ToastContainer position="top-right" autoClose={5000} theme="light" />
+      <ToastContainer position="top-right" autoClose={35000} theme="light" />
     </div>
   );
 }
