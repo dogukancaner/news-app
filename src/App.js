@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 //Components
 import Navbar from "./components/Navbar";
 //Pages
-import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./auth/SignUp";
@@ -20,7 +19,6 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const uid = user.uid;
         setUser(user);
       } else {
       }
@@ -37,7 +35,7 @@ function App() {
           <Route path="dashboard" element={<Home users={users} />} />
         </Routes>
       </BrowserRouter>
-      <ToastContainer position="top-right" autoClose={35000} theme="light" />
+      <ToastContainer position="top-right" autoClose={2000} theme="light" />
     </div>
   );
 }

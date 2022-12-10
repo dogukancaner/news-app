@@ -9,10 +9,10 @@ const Navbar = () => {
     await signOut(auth);
     setTimeout(() => {
       window.location = "/";
-    }, 3000);
+    }, 2000);
   };
   return (
-    <div className="bg-sky-700 h-12 text-white flex items-center justify-between p-3  ">
+    <div className="bg-sky-700 h-12 text-white flex  items-center justify-between p-3  ">
       <div className="text-2xl font-bold ">Logo</div>
       <div onClick={logoutFunc} className="cursor-pointer pr-4">
         Logout
