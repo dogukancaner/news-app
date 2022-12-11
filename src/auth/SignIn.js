@@ -29,6 +29,11 @@ const Auth = () => {
       toast.error(error.message);
     }
   };
+  const useEnterKeyListener = (e) => {
+    if (e.key === "Enter") {
+      authFunc();
+    }
+  };
 
   return (
     <div className=" flex items-center justify-center h-screen">
@@ -49,6 +54,7 @@ const Auth = () => {
           className="p-2.5 m-2 outline-none text-base border border-solid border-gray-300 rounded-md"
           type="password"
           placeholder="Parola Giriniz"
+          onKeyDown={useEnterKeyListener}
         />
         <GoogleAuth />
         <span className="cursor-pointer text-blue-600 font-bold ">

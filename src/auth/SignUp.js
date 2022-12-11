@@ -36,6 +36,12 @@ const Auth = () => {
     }
   };
 
+  const useEnterKeyListener = (e) => {
+    if (e.key === "Enter") {
+      authFunc();
+    }
+  };
+
   return (
     <div className=" flex items-center justify-center h-screen">
       <div className="max-w-lg w-full flex flex-col">
@@ -55,6 +61,7 @@ const Auth = () => {
           className="p-2.5 m-2 outline-none text-base border border-solid border-gray-300 rounded-md"
           type="password"
           placeholder="Parola Giriniz"
+          onKeyDown={useEnterKeyListener}
         />
 
         <button
