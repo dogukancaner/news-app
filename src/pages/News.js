@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
 const News = () => {
-  const [data, setData] = useState([]);
+  const [datas, setDatas] = useState([]);
   useEffect(() => {
     axios
       .get(
@@ -10,19 +15,23 @@ const News = () => {
     `
       )
       .then((res) => {
-        setData(res.data.articles);
+        setDatas(res.data.articles);
       });
   });
 
   return (
-    <div className=" bg-blue-500 flex flex-col items-center justify-center">
+    <div className=" flex flex-col items-center justify-center">
       <div>
-        {data.map((item, index) => {
-          <div></div>;
-        })}
+        {datas.map((data, index) => (
+          <ul key={index}>
+            <li>
+              <img src={data.urlToImage} alt="" />
+            </li>
+          </ul>
+        ))}
       </div>
       <div>
-        <div>Content</div>
+        <div></div>
       </div>
     </div>
   );
