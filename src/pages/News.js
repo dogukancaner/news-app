@@ -34,11 +34,17 @@ const News = () => {
           }}
           navigation={true}
           modules={[Autoplay, Navigation]}
-          className="text-center"
         >
           {datas.map((data, index) => (
             <SwiperSlide key={index}>
-              <img src={data.urlToImage} width={600} height={600} alt="" />
+              <p className="text-center mt-2 mb-2">{data.title}</p>
+              <img
+                className="rounded-xl"
+                src={data.urlToImage}
+                width={600}
+                height={600}
+                alt=""
+              />
             </SwiperSlide>
           ))}
         </Swiper>
