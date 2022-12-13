@@ -16,7 +16,6 @@ const Navbar = () => {
     <div className="bg-sky-700 h-12 text-white flex  items-center justify-between p-3  ">
       <div className="text-2xl font-bold ">Logo</div>
       <div>
-        <div>Email</div>
         <div onClick={logoutFunc} className="cursor-pointer pr-4">
           Logout
         </div>
