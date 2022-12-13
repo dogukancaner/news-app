@@ -37,7 +37,9 @@ const News = () => {
         >
           {datas.map((data, index) => (
             <SwiperSlide key={index}>
-              <p className="text-center mt-2 mb-2">{data.title}</p>
+              <a className="text-center mt-2 mb-2" href={data.url}>
+                {data.title}
+              </a>
               <img
                 className="rounded-xl"
                 src={data.urlToImage}
