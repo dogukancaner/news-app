@@ -9,9 +9,9 @@ const Home = ({ users }) => {
         Hoşgeldiniz
         <span className="font-bold ml-2">{users?.email}</span>
       </div>
-      {/* <div>
+      <div>
         <Weather />
-      </div> */}
+      </div>
       <div>
         <News />
       </div>

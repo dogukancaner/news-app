@@ -39,14 +39,15 @@ const News = () => {
             <SwiperSlide key={index}>
               <a className="text-center mt-2 mb-2" href={data.url}>
                 {data.title}
+
+                <img
+                  className="rounded-xl "
+                  src={data.urlToImage}
+                  width={600}
+                  height={600}
+                  alt=""
+                />
               </a>
-              <img
-                className="rounded-xl"
-                src={data.urlToImage}
-                width={600}
-                height={600}
-                alt=""
-              />
             </SwiperSlide>
           ))}
         </Swiper>
