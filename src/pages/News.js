@@ -24,34 +24,34 @@ const News = () => {
 
   return (
     <div>
-      <div>
-        <Swiper
-          spaceBetween={10}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          navigation={true}
-          modules={[Autoplay, Navigation]}
-        >
-          {datas.map((data, index) => (
-            <SwiperSlide key={index}>
-              <a className="text-center mt-2 mb-2" href={data.url}>
-                {data.title}
-
-                <img
-                  className="rounded-xl "
-                  src={data.urlToImage}
-                  width={600}
-                  height={600}
-                  alt=""
-                />
-              </a>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      <Swiper
+        spaceBetween={10}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        navigation={true}
+        modules={[Autoplay, Navigation]}
+      >
+        {datas.map((data, index) => (
+          <SwiperSlide
+            key={index}
+            className=" flex items-center justify-center"
+          >
+            <a className="text-center mt-4 font-bold text-xl" href={data.url}>
+              {data.title}
+              <img
+                className="rounded-xl mt-4  "
+                src={data.urlToImage}
+                width={1043}
+                height={1043}
+                alt=""
+              />
+            </a>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
