@@ -20,51 +20,6 @@ const Weather = () => {
   };
   setInterval(updateDate, 1000);
 
-  // const [coords, setCoords] = useState(null);
-  // const [current, setCurrent] = useState({
-  //   temp_c: "",
-  //   icon: "",
-  //   feelslike_c: "",
-  // });
-  // const [location, setLocation] = useState({
-  //   name: "",
-  //   region: "",
-  //   country: "",
-  //   localtime: "",
-  // });
-
-  // const getLocation = () => {
-  //   if (!navigator.geolocation) {
-  //     console.log("Geolocation is not supported by your browser");
-  //   } else {
-  //     navigator.geolocation.getCurrentPosition((position) => {
-  //       setCoords(`${position.coords.latitude},${position.coords.longitude}`);
-  //       console.log(position.coords);
-  //     });
-  //   }
-  // };
-
-  // const API_TOKEN = "d0ffdd65d4df418b9c1144641221412";
-
-  // useEffect(() => {
-  //   const apiURL = `https://api.weatherapi.com/v1/current.json?key=${API_TOKEN}&q=${coords}&aqi=no`;
-  //   axios(apiURL)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setCurrent({
-  //         temp_c: data.current.temp_c,
-  //         icon: data.current.condition.icon,
-  //         feelslike_c: data.current.feelslike_c,
-  //       });
-  //       setLocation({
-  //         name: data.location.name,
-  //         region: data.location.region,
-  //         country: data.location.country,
-  //         localtime: data.location.localtime,
-  //       });
-  //       console.log(data);
-  //     });
-  // }, [coords]);
   const API_TOKEN = "d0ffdd65d4df418b9c1144641221412";
   const [loading, setLoading] = useState(null);
   const [coords, setCoords] = useState(null);
@@ -92,24 +47,21 @@ const Weather = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
     const apiURL = `https://api.weatherapi.com/v1/current.json?key=${API_TOKEN}&q=${coords}&aqi=no`;
-    fetch(apiURL)
-      .then((res) => res.json())
-      .then((data) => {
-        setCurrent({
-          temp: data.current.temp_c,
-          icon: data.current.condition.icon,
-          feelslike_c: data.current.feelslike_c,
-        });
-        setLocation({
-          name: data.location.name,
-          region: data.location.region,
-          country: data.location.country,
-          localtime: data.location.localtime,
-        });
-        setLoading(false);
+    axios.get(apiURL).then((res) => {
+      setCurrent({
+        temp: res.data.current.temp_c,
+        icon: res.data.current.condition.icon,
+        feelslike_c: res.data.current.feelslike_c,
       });
+      setLocation({
+        name: res.data.location.name,
+        region: res.data.location.region,
+        country: res.data.location.country,
+        localtime: res.data.location.localtime,
+      });
+      setLoading(false);
+    });
   }, [coords]);
 
   return (
@@ -120,37 +72,37 @@ const Weather = () => {
         </span>
         <span className="">{currentTime}</span>
       </div>
-      <div className="border border-solid rounded w-full text-center bg-sky-700 ">
-        <button className="button" onClick={getLocation}>
-          Hava Durumunu Getir
+      <div className=" w-full text-center border-2 border-solid border-sky-700 p-4 rounded-md">
+        <button
+          className="button cursor-pointer bg-sky-700 text-white text-lg p-2 border-2 border-solid "
+          onClick={getLocation}
+        >
+          Hava Durumunu Göster
         </button>
         {!loading && (
-          <div>
-            <div className="weather">
-              <img src={current.icon} alt="Weather" />
-              <div>
-                Sıcaklık
-                <span>{current.temp}</span>
-              </div>
-              <div>
-                Hissedilen
-                <span>{current.feelslike_c}</span>
-              </div>
+          <div className="text-lg">
+            <div className="flex flex-col items-center justify-center">
+              <img src={current.icon} alt="" />
+              <span>
+                {" "}
+                <b>Sıcaklık:</b> {current.temp}°C
+              </span>
+              <span>
+                {" "}
+                <b>Hissedilen Sıcaklık:</b> {current.feelslike_c}°C
+              </span>
             </div>
-            <div>
-              <div className="location">
-                <span>{location.name}</span> - <span>{location.region}</span> -{" "}
-                <span>{location.country}</span>
-              </div>
-              <div>
-                <span className="time">{location.localtime}</span>
-              </div>
+            <div className="">
+              {" "}
+              <b>Konum: </b>
+              <span>{location.name}</span> - <span>{location.region}</span> -{" "}
+              <span>{location.country}</span>
             </div>
           </div>
         )}
         {loading && (
           <div className="loading">
-            <span>Yükleniyor...</span>
+            <span className="font-bold">Yükleniyor...</span>
           </div>
         )}
         {/* <button className="text-2xl font-bold text-white" onClick={getLocation}>
