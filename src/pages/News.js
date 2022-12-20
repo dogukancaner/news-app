@@ -52,6 +52,15 @@ const News = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div>
+        <ul>
+          {datas.map((data, index) => (
+            <li className="grid grid-rows-2 gap-4 mt-4" key={index}>
+              <img width={1043} height={1043} src={data.urlToImage} alt="" />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
