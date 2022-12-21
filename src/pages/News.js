@@ -24,8 +24,9 @@ const News = () => {
   });
 
   return (
-    <div>
+    <div className="p-10">
       <Swiper
+        className="p-4"
         spaceBetween={10}
         centeredSlides={true}
         autoplay={{
@@ -54,7 +55,7 @@ const News = () => {
         ))}
       </Swiper>
 
-      <div className=" grid grid-cols-4 gap-4 p-8  ">
+      <div className=" grid grid-cols-4 gap-4   ">
         {datas.map((data, index) => (
           <div key={index}>
             <a href={data.url}>
