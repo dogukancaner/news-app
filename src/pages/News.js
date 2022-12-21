@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper";
+import { data } from "autoprefixer";
 
 const News = () => {
   const [datas, setDatas] = useState([]);
@@ -52,14 +53,22 @@ const News = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div>
-        <ul>
-          {datas.map((data, index) => (
-            <li className="grid grid-rows-2 gap-4 mt-4" key={index}>
-              <img width={1043} height={1043} src={data.urlToImage} alt="" />
-            </li>
-          ))}
-        </ul>
+
+      <div className=" grid grid-cols-4 gap-4 p-8  ">
+        {datas.map((data, index) => (
+          <div key={index}>
+            <a href={data.url}>
+              <img
+                className="rounded-xl w-full "
+                width={1043}
+                height={1043}
+                src={data.urlToImage}
+                alt=""
+              />
+              <span className="font-bold text-center">{data.title}</span>
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );
